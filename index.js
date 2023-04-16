@@ -9,22 +9,24 @@ readline.emitKeypressEvents(process.stdin);
 
 process.stdin.setRawMode(true);
 
+let avanzar = () => serpiente.avanzarAlNorte();
+
 process.stdin.on("keypress", (str, key) => {
   if (key.ctrl && key.name === "c") {
     process.exit();
   } else {
     switch (key.name) {
       case "w":
-        serpiente.avanzarAlNorte();
+        avanzar = () => serpiente.avanzarAlNorte();
         break;
       case "d":
-        serpiente.avanzarDerecha();
+        avanzar = () => serpiente.avanzarDerecha();
         break;
       case "a":
-        serpiente.avanzarOeste();
+        avanzar = () => serpiente.avanzarOeste();
         break;
       case "s":
-        serpiente.avanzarSur();
+        avanzar = () => serpiente.avanzarSur();
         break;
       case "c":
         serpiente.agregarSeguidorAtras();
@@ -51,3 +53,8 @@ const renderSnake = () => {
 };
 
 renderSnake();
+
+setInterval(() => {
+  avanzar();
+  renderSnake();
+}, 300);
