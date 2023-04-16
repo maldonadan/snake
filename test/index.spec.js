@@ -49,4 +49,25 @@ describe("abc", () => {
       { x: 5, y: 6 },
     ]);
   });
+  it("t6", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.avanzarDerecha();
+
+    expect(unaSerpienteRecienCreada.x).to.eqls(6);
+    expect(unaSerpienteRecienCreada.y).to.eqls(5);
+  });
+  it("t7", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+
+    unaSerpienteRecienCreada.avanzarDerecha();
+
+    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([
+      { x: 5, y: 5 },
+      { x: 5, y: 6 },
+    ]);
+  });
 });

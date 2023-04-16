@@ -17,6 +17,9 @@ process.stdin.on("keypress", (str, key) => {
       case "a":
         serpiente.avanzarAlNorte();
         break;
+      case "d":
+        serpiente.avanzarDerecha();
+        break;
       case "c":
         serpiente.agregarSeguidorAtras();
         break;
