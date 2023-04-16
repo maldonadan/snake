@@ -3,6 +3,10 @@ class ParteDeSerpiente {
     this.x = x;
     this.y = y;
     this.seguidoresAtras = seguidoresAtras;
+    this.orientacion = "norte";
+  }
+  mirandoElSur() {
+    this.orientacion = "sur";
   }
   andaPara({ x, y }) {
     return new ParteDeSerpiente(
@@ -38,14 +42,31 @@ class ParteDeSerpiente {
       seguidor.andaPara({ x, y })
     );
   }
+  avanzarSur() {
+    const x = this.x;
+    const y = this.y;
+    this.y += 1;
+    this.seguidoresAtras = this.seguidoresAtras.map((seguidor) =>
+      seguidor.andaPara({ x, y })
+    );
+  }
   agregarSeguidorAtras() {
     if (!this.seguidoresAtras[0]) {
-      this.seguidoresAtras.push(
-        new ParteDeSerpiente({
-          x: this.x,
-          y: this.y + 1,
-        })
-      );
+      if (this.orientacion === "sur") {
+        this.seguidoresAtras.push(
+          new ParteDeSerpiente({
+            x: this.x,
+            y: this.y - 1,
+          })
+        );
+      } else {
+        this.seguidoresAtras.push(
+          new ParteDeSerpiente({
+            x: this.x,
+            y: this.y + 1,
+          })
+        );
+      }
     } else {
       this.seguidoresAtras[0].agregarSeguidorAtras();
     }

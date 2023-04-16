@@ -70,4 +70,32 @@ describe("abc", () => {
       { x: 5, y: 6 },
     ]);
   });
+  it("t8", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.avanzarSur();
+
+    expect(unaSerpienteRecienCreada.x).to.eqls(5);
+    expect(unaSerpienteRecienCreada.y).to.eqls(6);
+  });
+  it("t9", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.mirandoElSur();
+
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+
+    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 4 }]);
+  });
+  it("t10", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.mirandoElSur();
+
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+
+    unaSerpienteRecienCreada.avanzarSur();
+
+    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 5 }]);
+  });
 });

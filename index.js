@@ -14,11 +14,14 @@ process.stdin.on("keypress", (str, key) => {
     process.exit();
   } else {
     switch (key.name) {
-      case "a":
+      case "w":
         serpiente.avanzarAlNorte();
         break;
       case "d":
         serpiente.avanzarDerecha();
+        break;
+      case "s":
+        serpiente.avanzarSur();
         break;
       case "c":
         serpiente.agregarSeguidorAtras();
