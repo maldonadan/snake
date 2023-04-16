@@ -32,22 +32,32 @@ process.stdin.on("keypress", (str, key) => {
         serpiente.agregarSeguidorAtras();
         break;
     }
-    renderSnake();
+    // avanzar();
+    // renderSnake();
   }
 });
 
 const emptyCells = () => new Array(20).fill(" ");
 
+let appleX = 3;
+let appleY = 3;
+let frame = 0;
+
 const renderSnake = () => {
   console.clear();
+  console.log("Frame: ", frame);
+
   const lines = emptyCells(20).map(() => emptyCells(20));
 
-  lines[serpiente.y][serpiente.x] = "ö";
-  lines[10][10] = "ó";
-
-  if (serpiente.y === 10 && serpiente.x === 10) {
+  if (serpiente.y === appleY && serpiente.x === appleX) {
     serpiente.agregarSeguidorAtras();
+    appleY += 1;
+    appleX += 1;
   }
+
+  lines[appleY][appleX] = "ó";
+
+  lines[serpiente.y][serpiente.x] = "ö";
 
   serpiente.seguidores().forEach((seguidor) => {
     lines[seguidor.y][seguidor.x] = "o";
@@ -55,6 +65,7 @@ const renderSnake = () => {
 
   const output = lines.map((line) => line.join(".")).join("\n");
   console.log(output);
+  frame++;
 };
 
 renderSnake();
