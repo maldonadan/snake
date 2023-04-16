@@ -7,11 +7,11 @@ class Serpiente {
     this.tailPositions = [
       {
         x: x,
-        y: y + 2,
+        y: 6,
       },
       {
         x: x,
-        y: y + 3,
+        y: 7,
       },
     ];
   }
@@ -20,6 +20,8 @@ class Serpiente {
   }
   come() {
     this.comida = 1;
+    const last = this.tailPositions[this.tailPositions.length - 1];
+    this.tailPositions = [...this.tailPositions, { ...last, y: last.y + 1 }];
   }
   irHaciaLaDerecha() {
     this.puntoCardinal = "este";

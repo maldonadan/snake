@@ -90,10 +90,28 @@ describe("abc", () => {
     const unaSerpienteRecienCreada = createUnaSerpiente({ x, y });
 
     unaSerpienteRecienCreada.come();
+    unaSerpienteRecienCreada.come();
+    unaSerpienteRecienCreada.come();
 
     expect(unaSerpienteRecienCreada.tail()).to.eqls([
       { x: 5, y: 6 },
       { x: 5, y: 7 },
+      { x: 5, y: 8 },
+      { x: 5, y: 9 },
+      { x: 5, y: 10 },
+    ]);
+  });
+  it("t12", () => {
+    const x = 5;
+    const y = 5;
+    const unaSerpienteRecienCreada = createUnaSerpiente({ x, y });
+
+    unaSerpienteRecienCreada.come();
+
+    expect(unaSerpienteRecienCreada.tail()).to.eqls([
+      { x: 5, y: 6 },
+      { x: 5, y: 7 },
+      { x: 5, y: 8 },
     ]);
   });
 });
