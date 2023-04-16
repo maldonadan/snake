@@ -35,6 +35,7 @@ class ParteDeSerpiente {
     );
   }
   avanzarDerecha() {
+    this.orientacion = "este";
     const x = this.x;
     const y = this.y;
     this.x += 1;
@@ -65,6 +66,13 @@ class ParteDeSerpiente {
           new ParteDeSerpiente({
             x: this.x,
             y: this.y - 1,
+          })
+        );
+      } else if (this.orientacion === "este") {
+        this.seguidoresAtras.push(
+          new ParteDeSerpiente({
+            x: this.x - 1,
+            y: this.y,
           })
         );
       } else {

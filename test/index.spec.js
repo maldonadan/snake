@@ -108,4 +108,13 @@ describe("abc", () => {
     expect(unaSerpienteRecienCreada.x).to.eqls(4);
     expect(unaSerpienteRecienCreada.y).to.eqls(5);
   });
+  it("t12", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.avanzarDerecha();
+
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+
+    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 5 }]);
+  });
 });
