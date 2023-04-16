@@ -44,6 +44,7 @@ class ParteDeSerpiente {
     );
   }
   avanzarSur() {
+    this.orientacion = "sur";
     const x = this.x;
     const y = this.y;
     this.y += 1;

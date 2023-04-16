@@ -43,6 +43,11 @@ const renderSnake = () => {
   const lines = emptyCells(20).map(() => emptyCells(20));
 
   lines[serpiente.y][serpiente.x] = "ö";
+  lines[10][10] = "ó";
+
+  if (serpiente.y === 10 && serpiente.x === 10) {
+    serpiente.agregarSeguidorAtras();
+  }
 
   serpiente.seguidores().forEach((seguidor) => {
     lines[seguidor.y][seguidor.x] = "o";
@@ -57,4 +62,4 @@ renderSnake();
 setInterval(() => {
   avanzar();
   renderSnake();
-}, 300);
+}, 250);
