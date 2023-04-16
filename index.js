@@ -20,6 +20,9 @@ process.stdin.on("keypress", (str, key) => {
       case "d":
         serpiente.avanzarDerecha();
         break;
+      case "a":
+        serpiente.avanzarOeste();
+        break;
       case "s":
         serpiente.avanzarSur();
         break;

@@ -98,4 +98,14 @@ describe("abc", () => {
 
     expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 5 }]);
   });
+  it("t11", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.mirandoElSur();
+
+    unaSerpienteRecienCreada.avanzarOeste();
+
+    expect(unaSerpienteRecienCreada.x).to.eqls(4);
+    expect(unaSerpienteRecienCreada.y).to.eqls(5);
+  });
 });

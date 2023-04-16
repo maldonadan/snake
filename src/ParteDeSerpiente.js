@@ -50,6 +50,14 @@ class ParteDeSerpiente {
       seguidor.andaPara({ x, y })
     );
   }
+  avanzarOeste() {
+    const x = this.x;
+    const y = this.y;
+    this.x -= 1;
+    this.seguidoresAtras = this.seguidoresAtras.map((seguidor) =>
+      seguidor.andaPara({ x, y })
+    );
+  }
   agregarSeguidorAtras() {
     if (!this.seguidoresAtras[0]) {
       if (this.orientacion === "sur") {
