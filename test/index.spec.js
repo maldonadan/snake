@@ -36,4 +36,17 @@ describe("abc", () => {
       { x: 5, y: 7 },
     ]);
   });
+  it("t5", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+
+    unaSerpienteRecienCreada.avanzarAlNorte();
+
+    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([
+      { x: 5, y: 5 },
+      { x: 5, y: 6 },
+    ]);
+  });
 });

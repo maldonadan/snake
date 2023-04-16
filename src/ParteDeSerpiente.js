@@ -1,8 +1,16 @@
 class ParteDeSerpiente {
-  constructor({ x, y }) {
+  constructor({ x, y }, seguidoresAtras = []) {
     this.x = x;
     this.y = y;
-    this.seguidoresAtras = [];
+    this.seguidoresAtras = seguidoresAtras;
+  }
+  andaPara({ x, y }) {
+    return new ParteDeSerpiente(
+      { x, y },
+      this.seguidoresAtras.map((seguidor) => {
+        return seguidor.andaPara({ x: this.x, y: this.y });
+      })
+    );
   }
   seguidores() {
     return this.seguidoresAtras.flatMap((parte) =>
@@ -15,14 +23,11 @@ class ParteDeSerpiente {
     );
   }
   avanzarAlNorte() {
+    const x = this.x;
     const y = this.y;
     this.y -= 1;
-    this.seguidoresAtras = this.seguidoresAtras.map(
-      () =>
-        new ParteDeSerpiente({
-          x: this.x,
-          y,
-        })
+    this.seguidoresAtras = this.seguidoresAtras.map((seguidor) =>
+      seguidor.andaPara({ x, y })
     );
   }
   agregarSeguidorAtras() {
