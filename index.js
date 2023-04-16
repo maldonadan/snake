@@ -11,23 +11,23 @@ process.stdin.on("keypress", (str, key) => {
   if (key.ctrl && key.name === "c") {
     process.exit();
   } else {
-    switch (key.name) {
-      case "up":
-        serpiente.irHaciaArriba();
-        break;
-      case "right":
-        serpiente.irHaciaLaDerecha();
-        break;
-      case "left":
-        serpiente.irHaciaIzquierda();
-        break;
-      case "down":
-        serpiente.irHaciaAbajo();
-        break;
-      case "a":
-        serpiente.come();
-        break;
-    }
+    // switch (key.name) {
+    //   case "up":
+    //     serpiente.irHaciaArriba();
+    //     break;
+    //   case "right":
+    //     serpiente.irHaciaLaDerecha();
+    //     break;
+    //   case "left":
+    //     serpiente.irHaciaIzquierda();
+    //     break;
+    //   case "down":
+    //     serpiente.irHaciaAbajo();
+    //     break;
+    //   case "a":
+    //     serpiente.come();
+    //     break;
+    // }
     renderSnake();
   }
 });

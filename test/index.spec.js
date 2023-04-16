@@ -1,12 +1,28 @@
 const { expect } = require("chai");
-const Serpiente = require("../src/Serpiente");
+const ParteDeSerpiente = require("../src/ParteDeSerpiente");
 
-function createUnaSerpiente() {
-  return new Serpiente();
-}
 describe("abc", () => {
   it("t1", () => {
-    const unaSerpienteRecienCreada = createUnaSerpiente();
-    expect(1).to.eqls(2);
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.avanzarAlNorte();
+
+    expect(unaSerpienteRecienCreada.x).to.eqls(5);
+    expect(unaSerpienteRecienCreada.y).to.eqls(4);
+  });
+  it("t2", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+
+    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 6 }]);
+  });
+  it("t3", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+    unaSerpienteRecienCreada.avanzarAlNorte();
+
+    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 5 }]);
   });
 });
