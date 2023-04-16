@@ -36,18 +36,9 @@ const emptyCells = () => new Array(20).fill(" ");
 
 const renderSnake = () => {
   console.clear();
-  serpiente.avanza();
   const lines = emptyCells(20).map(() => emptyCells(20));
-  const head = serpiente.head();
-  lines[head.y][head.x] = "ö";
-  console.log(JSON.stringify(serpiente.tail(), null, 2));
-  serpiente.tail().forEach(({ y, x }) => {
-    lines[y][x] = "o";
-  });
   const output = lines.map((line) => line.join(".")).join("\n");
   console.log(output);
 };
-
-// setInterval(renderSnake, 220);
 
 renderSnake();
