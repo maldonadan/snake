@@ -19,10 +19,7 @@ class ParteDeSerpiente {
   seguidores() {
     return this.seguidoresAtras.flatMap((parte) =>
       parte.seguidores().length > 0
-        ? [
-            { x: parte.x, y: parte.y },
-            { x: parte.seguidores()[0].x, y: parte.seguidores()[0].y },
-          ]
+        ? [{ x: parte.x, y: parte.y }, ...parte.seguidores()]
         : [{ x: parte.x, y: parte.y }]
     );
   }
