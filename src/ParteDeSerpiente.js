@@ -5,9 +5,6 @@ class ParteDeSerpiente {
     this.seguidoresAtras = seguidoresAtras;
     this.orientacion = "norte";
   }
-  mirandoElSur() {
-    this.orientacion = "sur";
-  }
   andaPara({ x, y }) {
     return new ParteDeSerpiente(
       { x, y },
