@@ -21,38 +21,37 @@ class ParteDeSerpiente {
         : [{ x: parte.x, y: parte.y }]
     );
   }
-  updateSeguidoresAtras({ x, y }) {
+  moverSeguidorA({ x, y }) {
     this.seguidoresAtras = this.seguidoresAtras.map((seguidor) =>
       seguidor.andaPara({ x, y }, this.orientacion)
     );
   }
   avanzarAlNorte() {
     this.orientacion = "norte";
-    const x = this.x;
-    const y = this.y;
+    const posicionAntesDeMoverme = { x: this.x, y: this.y };
     this.y -= 1;
-    this.updateSeguidoresAtras({ x, y });
+    this.moverSeguidorA(posicionAntesDeMoverme);
   }
   avanzarDerecha() {
     this.orientacion = "este";
     const x = this.x;
     const y = this.y;
     this.x += 1;
-    this.updateSeguidoresAtras({ x, y });
+    this.moverSeguidorA({ x, y });
   }
   avanzarSur() {
     this.orientacion = "sur";
     const x = this.x;
     const y = this.y;
     this.y += 1;
-    this.updateSeguidoresAtras({ x, y });
+    this.moverSeguidorA({ x, y });
   }
   avanzarOeste() {
     this.orientacion = "oeste";
     const x = this.x;
     const y = this.y;
     this.x -= 1;
-    this.updateSeguidoresAtras({ x, y });
+    this.moverSeguidorA({ x, y });
   }
   agregarSeguidorAtras() {
     if (this.seguidoresAtras[0]) {
