@@ -39,7 +39,7 @@ process.stdin.on("keypress", (str, key) => {
 
 const emptyCells = () => new Array(20).fill(" ");
 
-let appleX = 3;
+let appleX = 8;
 let appleY = 3;
 let frame = 0;
 
@@ -52,7 +52,7 @@ const renderSnake = () => {
   if (serpiente.y === appleY && serpiente.x === appleX) {
     serpiente.agregarSeguidorAtras();
     appleY += 1;
-    appleX += 1;
+    appleX = appleX > 8 ? 3 : 9;
   }
 
   lines[appleY][appleX] = "ó";

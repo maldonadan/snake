@@ -1,5 +1,5 @@
 class ParteDeSerpiente {
-  constructor({ x, y }, seguidoresAtras = [], orientacion = "norte") {
+  constructor({ x, y }, orientacion = "norte", seguidoresAtras = []) {
     this.x = x;
     this.y = y;
     this.seguidoresAtras = seguidoresAtras;
@@ -8,10 +8,10 @@ class ParteDeSerpiente {
   andaPara({ x, y }, orientacion) {
     return new ParteDeSerpiente(
       { x, y },
-      this.seguidoresAtras.map((seguidor) => {
-        return seguidor.andaPara({ x: this.x, y: this.y }, orientacion);
-      }),
-      orientacion
+      orientacion,
+      this.seguidoresAtras.map((seguidor) =>
+        seguidor.andaPara({ x: this.x, y: this.y }, orientacion)
+      )
     );
   }
   seguidores() {
@@ -55,54 +55,28 @@ class ParteDeSerpiente {
     this.updateSeguidoresAtras({ x, y });
   }
   agregarSeguidorAtras() {
-    if (!this.seguidoresAtras[0]) {
-      if (this.orientacion === "sur") {
-        this.seguidoresAtras.push(
-          new ParteDeSerpiente(
-            {
-              x: this.x,
-              y: this.y - 1,
-            },
-            [],
-            this.orientacion
-          )
-        );
-      } else if (this.orientacion === "este") {
-        this.seguidoresAtras.push(
-          new ParteDeSerpiente(
-            {
-              x: this.x - 1,
-              y: this.y,
-            },
-            [],
-            this.orientacion
-          )
-        );
-      } else if (this.orientacion === "oeste") {
-        this.seguidoresAtras.push(
-          new ParteDeSerpiente(
-            {
-              x: this.x + 1,
-              y: this.y,
-            },
-            [],
-            this.orientacion
-          )
-        );
-      } else {
-        this.seguidoresAtras.push(
-          new ParteDeSerpiente(
-            {
-              x: this.x,
-              y: this.y + 1,
-            },
-            [],
-            this.orientacion
-          )
-        );
-      }
-    } else {
+    if (this.seguidoresAtras[0]) {
       this.seguidoresAtras[0].agregarSeguidorAtras();
+    } else {
+      this.seguidoresAtras.push(
+        new ParteDeSerpiente(
+          {
+            x:
+              this.orientacion === "este"
+                ? this.x - 1
+                : this.orientacion === "oeste"
+                ? this.x + 1
+                : this.x,
+            y:
+              this.orientacion === "sur"
+                ? this.y - 1
+                : this.orientacion === "norte"
+                ? this.y + 1
+                : this.y,
+          },
+          this.orientacion
+        )
+      );
     }
   }
 }
