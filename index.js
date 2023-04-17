@@ -73,4 +73,4 @@ renderSnake();
 setInterval(() => {
   avanzar();
   renderSnake();
-}, 250);
+}, 200);

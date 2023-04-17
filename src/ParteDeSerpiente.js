@@ -1,16 +1,17 @@
 class ParteDeSerpiente {
-  constructor({ x, y }, seguidoresAtras = []) {
+  constructor({ x, y }, seguidoresAtras = [], orientacion = "norte") {
     this.x = x;
     this.y = y;
     this.seguidoresAtras = seguidoresAtras;
-    this.orientacion = "norte";
+    this.orientacion = orientacion;
   }
-  andaPara({ x, y }) {
+  andaPara({ x, y }, orientacion) {
     return new ParteDeSerpiente(
       { x, y },
       this.seguidoresAtras.map((seguidor) => {
-        return seguidor.andaPara({ x: this.x, y: this.y });
-      })
+        return seguidor.andaPara({ x: this.x, y: this.y }, orientacion);
+      }),
+      orientacion
     );
   }
   seguidores() {
@@ -22,10 +23,11 @@ class ParteDeSerpiente {
   }
   updateSeguidoresAtras({ x, y }) {
     this.seguidoresAtras = this.seguidoresAtras.map((seguidor) =>
-      seguidor.andaPara({ x, y })
+      seguidor.andaPara({ x, y }, this.orientacion)
     );
   }
   avanzarAlNorte() {
+    this.orientacion = "norte";
     const x = this.x;
     const y = this.y;
     this.y -= 1;
@@ -56,31 +58,47 @@ class ParteDeSerpiente {
     if (!this.seguidoresAtras[0]) {
       if (this.orientacion === "sur") {
         this.seguidoresAtras.push(
-          new ParteDeSerpiente({
-            x: this.x,
-            y: this.y - 1,
-          })
+          new ParteDeSerpiente(
+            {
+              x: this.x,
+              y: this.y - 1,
+            },
+            [],
+            this.orientacion
+          )
         );
       } else if (this.orientacion === "este") {
         this.seguidoresAtras.push(
-          new ParteDeSerpiente({
-            x: this.x - 1,
-            y: this.y,
-          })
+          new ParteDeSerpiente(
+            {
+              x: this.x - 1,
+              y: this.y,
+            },
+            [],
+            this.orientacion
+          )
         );
       } else if (this.orientacion === "oeste") {
         this.seguidoresAtras.push(
-          new ParteDeSerpiente({
-            x: this.x + 1,
-            y: this.y,
-          })
+          new ParteDeSerpiente(
+            {
+              x: this.x + 1,
+              y: this.y,
+            },
+            [],
+            this.orientacion
+          )
         );
       } else {
         this.seguidoresAtras.push(
-          new ParteDeSerpiente({
-            x: this.x,
-            y: this.y + 1,
-          })
+          new ParteDeSerpiente(
+            {
+              x: this.x,
+              y: this.y + 1,
+            },
+            [],
+            this.orientacion
+          )
         );
       }
     } else {
