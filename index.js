@@ -51,7 +51,7 @@ const renderSnake = () => {
 
   if (serpiente.y === appleY && serpiente.x === appleX) {
     serpiente.agregarSeguidorAtras();
-    appleY += 1;
+    appleY = appleY > 19 ? 2 : appleY + 1;
     appleX = appleX > 8 ? 3 : 9;
   }
 
