@@ -42,10 +42,12 @@ const emptyCells = () => new Array(20).fill(" ");
 let appleX = 8;
 let appleY = 3;
 let frame = 0;
+let score = 0;
 
 const renderSnake = () => {
   console.clear();
   console.log("Frame: ", frame);
+  console.log("Score: ", score);
 
   const lines = emptyCells(20).map(() => emptyCells(20));
 
@@ -53,6 +55,7 @@ const renderSnake = () => {
     serpiente.agregarSeguidorAtras();
     appleY = appleY > 19 ? 2 : appleY + 1;
     appleX = appleX > 8 ? 3 : 9;
+    score++;
   }
 
   lines[appleY][appleX] = "ó";
