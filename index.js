@@ -48,6 +48,7 @@ const renderSnake = () => {
   console.clear();
   console.log("Frame: ", frame);
   console.log("Score: ", score);
+  console.log("Mordidas: ", serpiente.numeroDeAutoMordidas());
 
   const lines = emptyCells(20).map(() => emptyCells(20));
 

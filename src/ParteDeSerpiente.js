@@ -4,6 +4,10 @@ class ParteDeSerpiente {
     this.y = y;
     this.seguidoresAtras = seguidoresAtras;
     this.orientacion = orientacion;
+    this.mordidas = 0;
+  }
+  numeroDeAutoMordidas() {
+    return this.mordidas;
   }
   andaPara({ x, y }, orientacion) {
     return new ParteDeSerpiente(
@@ -25,6 +29,14 @@ class ParteDeSerpiente {
     this.seguidoresAtras = this.seguidoresAtras.map((seguidor) =>
       seguidor.andaPara({ x, y }, this.orientacion)
     );
+    const seguidores = this.seguidores();
+    if (
+      seguidores.some(
+        (seguidor) => seguidor.x === this.x && seguidor.y === this.y
+      )
+    ) {
+      this.mordidas += 1;
+    }
   }
   posicionActual() {
     return { x: this.x, y: this.y };

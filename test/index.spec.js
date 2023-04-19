@@ -171,4 +171,45 @@ describe("abc", () => {
       { x: 4, y: 7 },
     ]);
   });
+  it("t17", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    expect(unaSerpienteRecienCreada.numeroDeAutoMordidas()).to.eqls(0);
+  });
+  it("t18", () => {
+    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
+
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+
+    unaSerpienteRecienCreada.avanzarOeste();
+    unaSerpienteRecienCreada.avanzarSur();
+    unaSerpienteRecienCreada.avanzarDerecha();
+
+    expect(unaSerpienteRecienCreada.x).to.eqls(5);
+    expect(unaSerpienteRecienCreada.y).to.eqls(6);
+
+    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([
+      {
+        x: 4,
+        y: 6,
+      },
+      {
+        x: 4,
+        y: 5,
+      },
+      {
+        x: 5,
+        y: 5,
+      },
+      {
+        x: 5,
+        y: 6,
+      },
+    ]);
+
+    expect(unaSerpienteRecienCreada.numeroDeAutoMordidas()).to.eqls(1);
+  });
 });
