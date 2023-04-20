@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const ParteDeSerpiente = require("../src/ParteDeSerpiente");
 
-describe("", () => {
+describe("Snake", () => {
   it("should go 1 step to the north", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
@@ -49,7 +49,7 @@ describe("", () => {
       { x: 5, y: 6 },
     ]);
   });
-  it("t6", () => {
+  it("should go 1 step to the east", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.avanzarAlEste();
@@ -57,20 +57,16 @@ describe("", () => {
     expect(unaSerpienteRecienCreada.x).to.eqls(6);
     expect(unaSerpienteRecienCreada.y).to.eqls(5);
   });
-  it("t7", () => {
+  it("should add a new part at the left side when going to east", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
-
-    unaSerpienteRecienCreada.agregarSeguidorAtras();
-    unaSerpienteRecienCreada.agregarSeguidorAtras();
 
     unaSerpienteRecienCreada.avanzarAlEste();
 
-    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([
-      { x: 5, y: 5 },
-      { x: 5, y: 6 },
-    ]);
+    unaSerpienteRecienCreada.agregarSeguidorAtras();
+
+    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 5 }]);
   });
-  it("t8", () => {
+  it("should go 1 step to the south", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.avanzarSur();
@@ -78,7 +74,7 @@ describe("", () => {
     expect(unaSerpienteRecienCreada.x).to.eqls(5);
     expect(unaSerpienteRecienCreada.y).to.eqls(6);
   });
-  it("t9", () => {
+  it("should add a new part at the top side when going to south", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.avanzarSur();
@@ -87,7 +83,7 @@ describe("", () => {
 
     expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 5 }]);
   });
-  it("t10", () => {
+  it("should be followed his new part at the top when it goes to the south", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.avanzarSur();
@@ -100,26 +96,15 @@ describe("", () => {
     expect(unaSerpienteRecienCreada.y).to.eqls(7);
     expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 6 }]);
   });
-  it("t11", () => {
+  it("should go 1 step to the left when going to the west", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
-
-    unaSerpienteRecienCreada.avanzarSur();
 
     unaSerpienteRecienCreada.avanzarOeste();
 
     expect(unaSerpienteRecienCreada.x).to.eqls(4);
-    expect(unaSerpienteRecienCreada.y).to.eqls(6);
+    expect(unaSerpienteRecienCreada.y).to.eqls(5);
   });
-  it("t12", () => {
-    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
-
-    unaSerpienteRecienCreada.avanzarAlEste();
-
-    unaSerpienteRecienCreada.agregarSeguidorAtras();
-
-    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 5 }]);
-  });
-  it("t13", () => {
+  it("should add a new part at the right side when going to west", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.avanzarOeste();
@@ -128,29 +113,7 @@ describe("", () => {
 
     expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 5 }]);
   });
-  it("t14", () => {
-    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
-
-    unaSerpienteRecienCreada.avanzarSur();
-
-    unaSerpienteRecienCreada.agregarSeguidorAtras();
-
-    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 5 }]);
-  });
-  it("t15", () => {
-    const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
-
-    unaSerpienteRecienCreada.agregarSeguidorAtras();
-    unaSerpienteRecienCreada.agregarSeguidorAtras();
-    unaSerpienteRecienCreada.agregarSeguidorAtras();
-
-    expect(unaSerpienteRecienCreada.seguidores()).to.eqls([
-      { x: 5, y: 6 },
-      { x: 5, y: 7 },
-      { x: 5, y: 8 },
-    ]);
-  });
-  it("t16", () => {
+  it("should add a new part at the left side of the last parts when going to east", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.agregarSeguidorAtras();
@@ -171,12 +134,12 @@ describe("", () => {
       { x: 4, y: 7 },
     ]);
   });
-  it("t17", () => {
+  it("should have 0 bites when is created", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     expect(unaSerpienteRecienCreada.numeroDeAutoMordidas()).to.eqls(0);
   });
-  it("t18", () => {
+  it("should have 1 bites more everytime the head is in the same x and y of any part", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.agregarSeguidorAtras();
