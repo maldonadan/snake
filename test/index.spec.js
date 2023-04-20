@@ -1,8 +1,8 @@
 const { expect } = require("chai");
 const ParteDeSerpiente = require("../src/ParteDeSerpiente");
 
-describe("abc", () => {
-  it("t1", () => {
+describe("", () => {
+  it("should go 1 step to the north", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.avanzarAlNorte();
@@ -10,14 +10,14 @@ describe("abc", () => {
     expect(unaSerpienteRecienCreada.x).to.eqls(5);
     expect(unaSerpienteRecienCreada.y).to.eqls(4);
   });
-  it("t2", () => {
+  it("should add a new part at the end", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.agregarSeguidorAtras();
 
     expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 6 }]);
   });
-  it("t3", () => {
+  it("should be followed by his new part at the end when it goes to the north", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.agregarSeguidorAtras();
@@ -25,7 +25,7 @@ describe("abc", () => {
 
     expect(unaSerpienteRecienCreada.seguidores()).to.eqls([{ x: 5, y: 5 }]);
   });
-  it("t4", () => {
+  it("should add a new part at the end of the previous parts", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.agregarSeguidorAtras();
@@ -36,7 +36,7 @@ describe("abc", () => {
       { x: 5, y: 7 },
     ]);
   });
-  it("t5", () => {
+  it("should be followed by every part at the end when it goes to the north", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
     unaSerpienteRecienCreada.agregarSeguidorAtras();
