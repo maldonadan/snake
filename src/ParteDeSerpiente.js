@@ -47,7 +47,7 @@ class ParteDeSerpiente {
     this.y -= 1;
     this.moverSeguidorA(posicionAntesDeMoverme);
   }
-  avanzarDerecha() {
+  avanzarAlEste() {
     this.orientacion = "este";
     const posicionAntesDeMoverme = this.posicionActual();
     this.x += 1;

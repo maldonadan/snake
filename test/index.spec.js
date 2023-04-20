@@ -52,7 +52,7 @@ describe("", () => {
   it("t6", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
-    unaSerpienteRecienCreada.avanzarDerecha();
+    unaSerpienteRecienCreada.avanzarAlEste();
 
     expect(unaSerpienteRecienCreada.x).to.eqls(6);
     expect(unaSerpienteRecienCreada.y).to.eqls(5);
@@ -63,7 +63,7 @@ describe("", () => {
     unaSerpienteRecienCreada.agregarSeguidorAtras();
     unaSerpienteRecienCreada.agregarSeguidorAtras();
 
-    unaSerpienteRecienCreada.avanzarDerecha();
+    unaSerpienteRecienCreada.avanzarAlEste();
 
     expect(unaSerpienteRecienCreada.seguidores()).to.eqls([
       { x: 5, y: 5 },
@@ -113,7 +113,7 @@ describe("", () => {
   it("t12", () => {
     const unaSerpienteRecienCreada = new ParteDeSerpiente({ x: 5, y: 5 });
 
-    unaSerpienteRecienCreada.avanzarDerecha();
+    unaSerpienteRecienCreada.avanzarAlEste();
 
     unaSerpienteRecienCreada.agregarSeguidorAtras();
 
@@ -157,7 +157,7 @@ describe("", () => {
     unaSerpienteRecienCreada.agregarSeguidorAtras();
     unaSerpienteRecienCreada.agregarSeguidorAtras();
 
-    unaSerpienteRecienCreada.avanzarDerecha();
+    unaSerpienteRecienCreada.avanzarAlEste();
 
     unaSerpienteRecienCreada.agregarSeguidorAtras();
 
@@ -186,7 +186,7 @@ describe("", () => {
 
     unaSerpienteRecienCreada.avanzarOeste();
     unaSerpienteRecienCreada.avanzarSur();
-    unaSerpienteRecienCreada.avanzarDerecha();
+    unaSerpienteRecienCreada.avanzarAlEste();
 
     expect(unaSerpienteRecienCreada.x).to.eqls(5);
     expect(unaSerpienteRecienCreada.y).to.eqls(6);
